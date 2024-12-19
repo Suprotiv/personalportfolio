@@ -78,6 +78,7 @@ export default function Home() {
 
       {/* ScrollScaleImage Section */}
       <ScrollScaleImage />
+      <div className='h-[100vh] bg-white fixed'></div>
     </main>
   );
 }

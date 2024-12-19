@@ -19,31 +19,31 @@ export default function ScrollScaleImage() {
 
     const pictures = [
         {
-            src: '/bg1.avif',
+            src: '/SFC.jpg',
             scale: scale4
         },
         {
-            src: '/bg1.avif',
+            src: '/2.png',
             scale: scale5
         },
         {
-            src: '/bg1.avif',
+            src: '/8.png',
             scale: scale6
         },
         {
-            src: '/bg1.avif',
+            src: '/7.png',
             scale: scale5
         },
         {
-            src: '/bg1.avif',
+            src: '/5.png',
             scale: scale6
         },
         {
-            src: '/bg1.avif',
+            src: '/9.png',
             scale: scale8
         },
         {
-            src: '/bg1.avif',
+            src: '/3.png',
             scale: scale9
         }
     ]

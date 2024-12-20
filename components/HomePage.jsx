@@ -1,11 +1,15 @@
-'use client';
+"use client";
 
-import { motion, useScroll, useTransform } from 'framer-motion';
-import MainPage from '@/components/Main';
-import Projects from '@/components/Projects';
-import ScrollScaleImage from './ScrollScaleImage';
-import Lenis from '@studio-freight/lenis';
-import { useEffect } from 'react';
+import { motion, useScroll, useTransform } from "framer-motion";
+import MainPage from "@/components/Main";
+import ScrollScaleImage from "./ScrollScaleImage";
+import Lenis from "@studio-freight/lenis";
+import { useEffect } from "react";
+import Achievements from "@/components/Achievements";
+import Projects from "./Projects";
+import Image from "next/image";
+import AboutSection from "./AboutSection";
+import Footer from "./Footer";
 
 export default function Home() {
   const { scrollYProgress } = useScroll();
@@ -22,9 +26,9 @@ export default function Home() {
   }, []); // Initialize smooth scrolling
 
   // Scroll-based transforms
-  const backgroundY = useTransform(scrollYProgress, [0, 0.5], ['0%', '-100%']); // Slow background
-  const mainPageY = useTransform(scrollYProgress, [0, 1], ['0%', '-50%']);
-  const projectY = useTransform(scrollYProgress, [0.3, 0.6], ['10%', '0%']); // MainPage scrolls faster at the start
+  const backgroundY = useTransform(scrollYProgress, [0, 0.5], ["0%", "-100%"]); // Slow background
+  const mainPageY = useTransform(scrollYProgress, [0, 1], ["0%", "-50%"]);
+  const projectY = useTransform(scrollYProgress, [0, 0.6], ["10%", "-10%"]); // MainPage scrolls faster at the start
 
   return (
     <main>
@@ -33,13 +37,14 @@ export default function Home() {
         className="background"
         style={{
           y: backgroundY,
-          backgroundImage: 'url(/bg1.avif)',
-          backgroundSize: 'cover',
-          position: 'fixed',
+          backgroundImage: `linear-gradient(to top, #000000, transparent), url(/images.jpg)`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          position: "fixed",
           top: 0,
           left: 0,
-          width: '100%',
-          height: '100vh',
+          width: "100%",
+          height: "100vh",
           zIndex: -1,
         }}
       />
@@ -49,10 +54,10 @@ export default function Home() {
         className="mainPage"
         style={{
           y: mainPageY,
-          height: '100vh',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
+          height: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
         <MainPage />
@@ -60,25 +65,31 @@ export default function Home() {
 
       {/* Projects Section with Fade-In + Pop Animation */}
       <motion.div
-        className="projects"
-        initial={{ opacity: 0, y: 50 }} // Start faded out and slightly below
-        animate={{ opacity: 1, y: 0 }} // Fade in and move to position
-       // Trigger animation when in viewport
+        className="projects" // Fade in and move to position
+        // Trigger animation when in viewport
         style={{
           y: projectY,
-          minHeight: '100vh', // Ensure full viewport height
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-         // Add padding to avoid content clipping
+          minHeight: "100vh", // Ensure full viewport height
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          // Add padding to avoid content clipping
         }}
       >
-        <Projects />
+        <Achievements />
       </motion.div>
 
       {/* ScrollScaleImage Section */}
       <ScrollScaleImage />
-      <div className='h-[100vh] bg-white fixed'></div>
+      <div>
+        <div className="relative z-20 bg-black pb-[20vh]">
+          <Projects />
+        </div>
+        <div className="relative z-10 bg-black ">
+          <AboutSection />
+        </div>
+        <Footer />
+      </div>
     </main>
   );
 }

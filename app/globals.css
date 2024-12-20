@@ -43,9 +43,9 @@ body {
 }
 
 .Container {
-  height: 300vh; /* Large enough height for scrolling */
+  height: 250vh;
+  background-color: black; /* Large enough height for scrolling */
   position: relative;
-  background-color: black;
 }
 
 .Container .sticky {
@@ -63,6 +63,14 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.fixed-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: -1; /* Keep it behind scrolling content */
 }
 
 .Container .sticky .el .imageContainer {

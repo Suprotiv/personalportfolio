@@ -15,14 +15,14 @@ export default function ScrollScaleImage() {
   const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1, 0]);
   const opacityNew = useTransform(scrollYProgress, [0, 0.5, 1], [0, 0, 1]);
   const transformY = useTransform(scrollYProgress, [0, 0.5, 1], [500, 500, 0]);
-  const scale5 = useTransform(scrollYProgress, [0, 1], [1, 5]);
-  const scale6 = useTransform(scrollYProgress, [0, 1], [1, 6]);
+  const scale5 = useTransform(scrollYProgress, [0, 1], [1, 6]);
+  const scale6 = useTransform(scrollYProgress, [0, 1], [1, 7]);
   const scale8 = useTransform(scrollYProgress, [0, 1], [1, 8]);
   const scale9 = useTransform(scrollYProgress, [0, 1], [1, 9]);
 
   const pictures = [
     {
-      src: "/SFC.jpg",
+      src: "/1.png",
       scale: scale4,
     },
     {
@@ -34,11 +34,11 @@ export default function ScrollScaleImage() {
       scale: scale6,
     },
     {
-      src: "/7.png",
+      src: "/11.png",
       scale: scale5,
     },
     {
-      src: "/5.png",
+      src: "/7.png",
       scale: scale6,
     },
     {

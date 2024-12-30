@@ -73,7 +73,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`${navbarClass.backgroundColor} fixed w-full z-30 top-0 left-0 animate-fadeInTopToBottom transition-all duration-300 ${navbarClass.padding}`}
+      className={`${navbarClass.backgroundColor} fixed w-full z-40 top-0 left-0 animate-fadeInTopToBottom transition-all duration-300 ${navbarClass.padding}`}
     >
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
         <Link href="/" onClick={() => setMenuOpen(false)}>

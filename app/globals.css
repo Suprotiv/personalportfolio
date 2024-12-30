@@ -124,3 +124,18 @@ body {
   width: 15vw;
   height: 15vh;
 }
+
+.window-mask {
+  mask-image: linear-gradient(black, black), url("/window.svg");
+  mask-composite: exclude;
+  mask-repeat: no-repeat;
+  mask-size: auto, 300px auto;
+  mask-position: center center, center center;
+}
+
+@media (max-width: theme("screens.md")) {
+  .window-mask {
+    mask-size: auto, 150px auto;
+    mask-position: center center, center bottom 1.5rem;
+  }
+}

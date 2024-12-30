@@ -10,6 +10,7 @@ import Projects from "./Projects";
 import Image from "next/image";
 import AboutSection from "./AboutSection";
 import Footer from "./Footer";
+import Service from "./Service";
 
 export default function Home() {
   const { scrollYProgress } = useScroll();
@@ -81,11 +82,16 @@ export default function Home() {
 
       {/* ScrollScaleImage Section */}
       <ScrollScaleImage />
+
       <div>
-        <div className="relative z-20 bg-black pb-[20vh]">
+        <div className="relative z-30 bg-black">
           <Projects />
         </div>
-        <div className="relative z-10 bg-black ">
+        <div className="relative z-20 bg-black">
+          <Service />
+        </div>
+
+        <div className="relative z-10 ">
           <AboutSection />
         </div>
         <Footer />

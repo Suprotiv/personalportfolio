@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-export const FadeIn = ({ view = "0px", yvalue = 20, children }) => {
+export const FadeIn = ({ view = "-200px", yvalue = 20, children }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: yvalue }}

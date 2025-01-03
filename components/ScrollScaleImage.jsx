@@ -19,18 +19,21 @@ export default function ScrollScaleImage() {
   const scale6 = useTransform(scrollYProgress, [0, 1], [1, 7]);
   const scale8 = useTransform(scrollYProgress, [0, 1], [1, 8]);
   const scale9 = useTransform(scrollYProgress, [0, 1], [1, 9]);
+  const scale10 = useTransform(scrollYProgress, [0, 1], [1, 10]);
+  const scale11 = useTransform(scrollYProgress, [0, 1], [1, 11]);
+  const scale12 = useTransform(scrollYProgress, [0, 1], [1, 12]);
 
   const pictures = [
     {
-      src: "/1.png",
+      src: "/center.png",
       scale: scale4,
     },
     {
-      src: "/2.png",
+      src: "/3.png",
       scale: scale5,
     },
     {
-      src: "/8.png",
+      src: "/9real.png",
       scale: scale6,
     },
     {
@@ -46,8 +49,13 @@ export default function ScrollScaleImage() {
       scale: scale8,
     },
     {
-      src: "/3.png",
+      src: "/2.png",
       scale: scale9,
+    },
+
+    {
+      src: "/8.png",
+      scale: scale8,
     },
   ];
 
@@ -63,7 +71,7 @@ export default function ScrollScaleImage() {
         ))}
 
         {/* Text Overlay */}
-        <div className="absolute inset-0 flex items-center justify-center z-10">
+        <div className="absolute inset-0 flex  justify-center z-10 p-8">
           <motion.div
             className="text-center"
             style={{ opacity: opacityNew, y: transformY }}
@@ -74,35 +82,39 @@ export default function ScrollScaleImage() {
               </h1>
             </FadeIn>
             <FadeIn view={"-300px"}>
-              <h1 className="text-white text-4xl lg:text-5xl my-2 font-bold">
+              <h1 className="text-white text-4xl lg:text-5xl mt-2 mb-10 font-bold">
                 Projects I have worked on
               </h1>
             </FadeIn>
-            <div className={`flex gap-10 items-center p-5 ${"flex-row"}`}>
-              <FadeIn view={"-300px"}>
-                <Image
-                  src={"/7.png"}
-                  width={800}
-                  height={800}
-                  alt={"image"}
-                  className="object-cover rounded-md mt-[10vh]"
-                />
-              </FadeIn>
-              <FadeIn view={"-300px"}>
-                <h1 className="mb-10 text-left font-bold text-4xl">
-                  Rounak Chowdhury's Portfolio
-                </h1>
-                <p className="text-gray-300 text-left text-base w-[45vw]">
-                  I am Rounak, a professional video editor and photographer from
-                  India with over 4 years of experience crafting visually
-                  compelling content. My expertise spans across Adobe Suite
-                  (Premiere Pro, After Effects, Photoshop, and more), DaVinci
-                  Resolve, and Magix Vegas Pro, and I am adept in animation,
-                  motion graphics, typography, sound design, color grading, and
-                  VFX.
-                </p>
-              </FadeIn>
-            </div>
+            <FadeIn view={"-300px"}>
+              <div
+                className={`flex gap-10 items-center p-10 bg-[#0c0c0c] rounded-3xl ${"flex-row"}`}
+              >
+                <FadeIn view={"-300px"}>
+                  <Image
+                    src={"/7.png"}
+                    width={800}
+                    height={800}
+                    alt={"image"}
+                    className="object-cover rounded-md "
+                  />
+                </FadeIn>
+                <FadeIn view={"-300px"}>
+                  <h1 className="mb-10 text-4xl text-left font-bold text-white">
+                    Rounak Chowdhury's Portfolio
+                  </h1>
+                  <p className="text-gray-300 text-left text-base w-[45vw]">
+                    I am Rounak, a professional video editor and photographer
+                    from India with over 4 years of experience crafting visually
+                    compelling content. My expertise spans across Adobe Suite
+                    (Premiere Pro, After Effects, Photoshop, and more), DaVinci
+                    Resolve, and Magix Vegas Pro, and I am adept in animation,
+                    motion graphics, typography, sound design, color grading,
+                    and VFX.
+                  </p>
+                </FadeIn>
+              </div>
+            </FadeIn>
           </motion.div>
         </div>
       </div>

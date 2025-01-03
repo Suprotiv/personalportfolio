@@ -11,7 +11,7 @@ const MainPage = () => {
           Suprotiv Moitra
         </h1>
 
-        <h1 className="text-white text-4xl lg:text-5xl mt-2 mb-3 font-bold">
+        <h1 className="text-white text-4xl lg:text-5xl mt-2 mb-3 ">
           Freelance Web Developer
         </h1>
         <div className="mt-6">

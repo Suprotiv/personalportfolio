@@ -7,10 +7,10 @@ const Service = () => {
 
   // Map list items to their respective background images
   const backgroundImages = {
-    "Frontend Websites": "/SFC.jpg",
-    "Full Stack Websites": "/Audio.jpg",
-    "Portfolio Websites": "/LFC_1.jpg",
-    "Interactive Mobile Apps": "/commercial.jpg",
+    "Frontend Websites": "/frontend.png",
+    "Full Stack Websites": "/fullstack.jpg",
+    "Portfolio Websites": "/webdesign.jpg",
+    "Interactive Mobile Apps": "/mobile.png",
   };
 
   // Map list items to their respective custom text
@@ -30,7 +30,7 @@ const Service = () => {
       className="flex flex-col h-screen justify-between"
       style={{
         backgroundImage: `url(${
-          hoveredItem ? backgroundImages[hoveredItem] : "/service.png"
+          hoveredItem ? backgroundImages[hoveredItem] : "/bgservice.jpg"
         })`,
         backgroundSize: "cover", // Ensures the image covers the entire div
         backgroundPosition: "center", // Centers the image
@@ -55,7 +55,7 @@ const Service = () => {
               <FadeIn key={item} view="-150px">
                 <li
                   key={item}
-                  className="text-gray-100 hover:text-white text-3xl py-8 hover:cursor-pointer hover:font-bold hover:text-4xl transition-all duration-500"
+                  className="text-gray-100 hover:text-white text-3xl py-8 inline-block hover:cursor-pointer hover:font-bold hover:text-4xl transition-all duration-500"
                   onMouseEnter={() => setHoveredItem(item)} // Update state on hover
                   onMouseLeave={() => setHoveredItem(null)} // Reset state on hover out
                 >
@@ -69,16 +69,16 @@ const Service = () => {
         {/* Right Side: Custom Text */}
         <div className="w-[46vw] relative left-1/2 h-1/2 flex items-center justify-center">
           {hoveredItem ? (
-            <FadeIn key={hoveredItem} view="-300px">
-              <div className="bg-white bg-opacity-80 p-6 rounded-lg shadow-lg animate-fadeInTopToBottom">
+            <FadeIn key={hoveredItem} view="-150px">
+              <div className="bg-white bg-opacity-70 p-6 rounded-lg shadow-lg animate-fadeInTopToBottom">
                 <p className="text-black text-xl font-medium text-center">
                   {customText[hoveredItem]}
                 </p>
               </div>
             </FadeIn>
           ) : (
-            <FadeIn view="-300px">
-              <div className="bg-white bg-opacity-80 p-6 rounded-lg shadow-lg">
+            <FadeIn view="-150px">
+              <div className="bg-white bg-opacity-70 p-6 rounded-lg shadow-lg">
                 <p className="text-black text-xl font-medium text-center">
                   Hover over a service to learn more about what we offer.
                 </p>

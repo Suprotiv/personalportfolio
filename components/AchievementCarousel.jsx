@@ -3,6 +3,13 @@
 import React, { useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Lenis from "@studio-freight/lenis";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faLaptopCode,
+  faGlobe,
+  faMicrochip,
+  faCode,
+} from "@fortawesome/free-solid-svg-icons";
 import { FadeIn } from "./FadeIn";
 
 const timelineData = [
@@ -11,51 +18,29 @@ const timelineData = [
     title: "Started Programming",
     description:
       "Started Learning to code with C (Let Us C) and HTML/CSS (W3Schools).",
-    icon: "💻",
+    icon: faCode,
   },
   {
     year: "2016",
     title: "WordPress Development",
     description:
       "Built a website for the student-run sustainability startup Pratyutpanna at our school and blogs to keep in touch with friends.",
-    icon: "🌐",
+    icon: faGlobe,
   },
   {
     year: "2017",
     title: "Circuit Design",
     description:
       "Designed a handheld metal detector with a 555 timer IC and passive components, guided by my private tutor.",
-    icon: "🔌",
+    icon: faMicrochip,
   },
   {
     year: "2017",
-    title: "Circuit Design",
+    title: "Advanced Projects",
     description:
-      "Designed a handheld metal detector with a 555 timer IC and passive components, guided by my private tutor.",
-    icon: "🔌",
+      "Explored more advanced projects with a focus on hardware and software integration.",
+    icon: faLaptopCode,
   },
-  {
-    year: "2017",
-    title: "Circuit Design",
-    description:
-      "Designed a handheld metal detector with a 555 timer IC and passive components, guided by my private tutor.",
-    icon: "🔌",
-  },
-  {
-    year: "2016",
-    title: "WordPress Development",
-    description:
-      "Built a website for the student-run sustainability startup Pratyutpanna at our school and blogs to keep in touch with friends.",
-    icon: "🌐",
-  },
-  {
-    year: "2016",
-    title: "WordPress Development",
-    description:
-      "Built a website for the student-run sustainability startup Pratyutpanna at our school and blogs to keep in touch with friends.",
-    icon: "🌐",
-  },
-  // Add more timeline items as needed
 ];
 
 const TimelineCard = ({
@@ -66,7 +51,6 @@ const TimelineCard = ({
   side,
   scrollYProgress,
 }) => {
-  // Animate opacity and translation for each card based on its individual scroll progress
   const opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
   const translateX = useTransform(
     scrollYProgress,
@@ -78,14 +62,14 @@ const TimelineCard = ({
     <motion.div
       style={{
         opacity,
-        x: translateX, // Dynamically animate based on scroll
+        x: translateX,
       }}
-      className={`relative bg-gradient-to-b from-gray-900 to-gray-800 text-white p-5 rounded-lg shadow-lg w-full md:w-[500px] mb-10 ${
+      className={`relative text-white p-5 rounded-lg shadow-lg w-full md:w-[500px] mb-10 ${
         side === "left" ? "md:ml-auto" : "md:mr-auto"
       }`}
     >
       <div className="flex items-center mb-2">
-        <div className="text-4xl mr-4">{icon}</div>
+        <FontAwesomeIcon icon={icon} className="text-4xl text-white mr-4" />
         <h2 className="text-xl font-bold">{title}</h2>
       </div>
       <p className="text-gray-300">{description}</p>
@@ -102,6 +86,7 @@ const TimelineCard = ({
 
 const AchievementCarousel = () => {
   const targetRef = useRef(null);
+
   useEffect(() => {
     const lenis = new Lenis();
 
@@ -111,64 +96,56 @@ const AchievementCarousel = () => {
     }
 
     requestAnimationFrame(raf);
-  }, []); // Reference for the main container
+  }, []);
 
-  // Scroll progress for the vertical bar
   const { scrollYProgress } = useScroll({
     target: targetRef,
     offset: ["start center", "end center"],
   });
 
-  // Transformations for the vertical bar height
   const barHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
     <div
       className="flex flex-col items-center justify-center py-10 w-full min-h-screen"
-      ref={targetRef} // Reference the entire scrollable section
+      ref={targetRef}
     >
       <FadeIn view={"-200px"}>
         <h1 className="text-4xl font-bold text-white mb-10">My Journey</h1>
       </FadeIn>
       <div className="relative flex flex-col items-center w-[80vw]">
-        {/* Vertical Line */}
         <motion.div
           className="absolute top-0 left-[50%] -translate-x-[50%] w-1 bg-gray-700 origin-top"
-          style={{ height: barHeight }} // Animate height dynamically
+          style={{ height: barHeight }}
         ></motion.div>
 
-        {/* Timeline Cards */}
         {timelineData.map((item, index) => {
           const cardRef = useRef(null);
 
-          // Scroll progress for individual card
           const { scrollYProgress: cardScrollYProgress } = useScroll({
             target: cardRef,
             offset: ["start center", "end center"],
           });
 
-          // Green dot scaling transformation
           const buttonScale = useTransform(cardScrollYProgress, [0, 1], [0, 1]);
 
           return (
             <div
               key={index}
               className="relative flex items-start w-full"
-              ref={cardRef} // Reference each timeline card
+              ref={cardRef}
             >
-              {/* Connector Dot */}
               <motion.div
                 className="w-[20px] h-[20px] bg-white rounded-full absolute top-5 left-[49.1%] -translate-x-[50%]"
                 style={{
-                  scale: buttonScale, // Scale dynamically
+                  scale: buttonScale,
                 }}
               ></motion.div>
 
-              {/* Timeline Card */}
               <TimelineCard
                 {...item}
                 side={index % 2 === 0 ? "left" : "right"}
-                scrollYProgress={cardScrollYProgress} // Pass individual scroll progress to the card
+                scrollYProgress={cardScrollYProgress}
               />
             </div>
           );

@@ -36,9 +36,9 @@ const AboutSection = () => {
   );
 
   const imageSets = [
-    ["main.png", "asBG.jpg", "projects.png"],
-    ["projects.png", "main.png", "aboutpage.png"],
-    ["aboutpage.png", "projects.png", "main.png"],
+    ["services.png", "asBG.jpg", "projects.png"],
+    ["projects.png", "services.png", "aboutpage.png"],
+    ["aboutpage.png", "projects.png", "services.png"],
   ];
 
   const [currentSetIndex, setCurrentSetIndex] = useState(0);

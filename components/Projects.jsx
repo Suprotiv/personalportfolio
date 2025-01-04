@@ -1,4 +1,4 @@
-import { useScroll, useTransform, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import React from "react";
 import { FadeIn } from "./FadeIn";
@@ -35,29 +35,30 @@ const Projects = () => {
   ];
 
   return (
-    <div className="flex flex-col w-full space-y-[8vh] p-8 top-0 z-50 ">
+    <div className="flex flex-col w-full space-y-[6vh] md:space-y-[8vh] p-8 top-0 z-50">
       {projectData.map((project, index) => (
         <FadeIn view={"-290px"} key={index}>
           <div
-            key={index}
-            className={`flex gap-10 items-center bg-[#0c0c0c] rounded-3xl  p-10 ${
-              index % 2 === 0 ? "flex-row-reverse" : "flex-row"
+            className={`flex flex-col md:flex-row gap-10 items-center bg-[#0c0c0c] rounded-3xl p-10 ${
+              index % 2 === 0 ? "md:flex-row-reverse" : "md:flex-row"
             }`}
           >
-            <div>
+            {/* Image Section */}
+            <div className="w-full md:w-1/2">
               <Image
                 src={project.imgSrc}
                 width={800}
                 height={800}
                 alt={project.imgAlt}
-                className="object-cover rounded-lg"
+                className="object-cover rounded-lg w-full h-auto"
               />
             </div>
-            <div>
-              <h1 className="mb-10 text-4xl font-bold text-white">
+            {/* Text Section */}
+            <div className="w-full md:w-1/2">
+              <h1 className="mb-6 text-xl md:text-4xl font-bold text-white">
                 {project.imageTitle}
               </h1>
-              <p className="text-gray-300 text-base w-[45vw]">
+              <p className="text-gray-300 text-sm md:text-base">
                 {project.description}
               </p>
             </div>

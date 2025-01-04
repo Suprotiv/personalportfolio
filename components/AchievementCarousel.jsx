@@ -64,22 +64,15 @@ const TimelineCard = ({
         opacity,
         x: translateX,
       }}
-      className={`relative text-white p-5 rounded-lg shadow-lg w-full md:w-[500px] mb-10 ${
-        side === "left" ? "md:ml-auto" : "md:mr-auto"
+      className={`relative text-white p-5 rounded-lg shadow-lg w-[300px] md:w-[500px] mb-10 ${
+        side === "left" ? "ml-[40px] md:ml-auto" : "ml-[40px] md:mr-auto"
       }`}
     >
       <div className="flex items-center mb-2">
         <FontAwesomeIcon icon={icon} className="text-4xl text-white mr-4" />
-        <h2 className="text-xl font-bold">{title}</h2>
+        <h2 className="text-lg md:text-xl font-bold">{title}</h2>
       </div>
-      <p className="text-gray-300">{description}</p>
-      <span
-        className={`absolute top-5 bg-gray-700 text-white font-bold py-1 px-3 rounded-full ${
-          side === "left" ? "-left-[60px]" : "-right-[60px]"
-        }`}
-      >
-        {year}
-      </span>
+      <p className="text-gray-300 ">{description}</p>
     </motion.div>
   );
 };
@@ -115,7 +108,7 @@ const AchievementCarousel = () => {
       </FadeIn>
       <div className="relative flex flex-col items-center w-[80vw]">
         <motion.div
-          className="absolute top-0 left-[50%] -translate-x-[50%] w-1 bg-gray-700 origin-top"
+          className="absolute top-0 left-5 md:left-[50%] -translate-x-[50%] w-1 bg-[#9b9b9b] bg-opacity-40 origin-top"
           style={{ height: barHeight }}
         ></motion.div>
 
@@ -127,20 +120,24 @@ const AchievementCarousel = () => {
             offset: ["start center", "end center"],
           });
 
-          const buttonScale = useTransform(cardScrollYProgress, [0, 1], [0, 1]);
-
           return (
             <div
               key={index}
               className="relative flex items-start w-full"
               ref={cardRef}
             >
+              {/* Icon Marker */}
               <motion.div
-                className="w-[20px] h-[20px] bg-white rounded-full absolute top-5 left-[49.1%] -translate-x-[50%]"
+                className="absolute top-5 left-0 md:left-[48.4%] -translate-x-[50%] bg-white p-2 rounded-full shadow-md flex justify-center items-center"
                 style={{
-                  scale: buttonScale,
+                  scale: cardScrollYProgress, // Dynamically scale the icon
                 }}
-              ></motion.div>
+              >
+                <FontAwesomeIcon
+                  icon={item.icon}
+                  className="text-xl text-[#0c0c0c]"
+                />
+              </motion.div>
 
               <TimelineCard
                 {...item}

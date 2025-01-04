@@ -11,7 +11,7 @@ import {
 
 const Footer = () => {
   return (
-    <div className="relative h-[130vh] bottom-0">
+    <div className="relative h-auto">
       {/* Background Section */}
       <div className="mt-[-100vh] h-[130vh] sticky bottom-0 bg-gray-700">
         <Image
@@ -22,12 +22,14 @@ const Footer = () => {
         />
         <div className="absolute bottom-0 w-full text-white bg-opacity-70">
           <div className="container mx-auto px-5 py-10">
-            <div className="flex flex-col md:flex-row md:justify-between items-center">
+            <div className="flex flex-col items-center space-y-10 md:space-y-0 md:flex-row md:justify-between">
               {/* Logo Section */}
-              <div className="text-2xl font-semibold">Colorlib</div>
+              <div className="text-2xl font-semibold text-center md:text-left">
+                Colorlib
+              </div>
 
               {/* Navigation Links */}
-              <div className="flex space-x-4 mt-4 md:mt-0">
+              <div className="flex flex-wrap justify-center space-x-4 md:space-x-6 mt-4 md:mt-0 text-sm">
                 <a href="#" className="hover:text-gray-300">
                   Privacy
                 </a>
@@ -52,7 +54,7 @@ const Footer = () => {
               </div>
 
               {/* Social Media Icons */}
-              <div className="flex space-x-4 mt-4 md:mt-0">
+              <div className="flex justify-center space-x-4 text-lg">
                 <a href="#" className="hover:text-blue-500">
                   <FaFacebookF />
                 </a>
@@ -75,14 +77,12 @@ const Footer = () => {
             </div>
 
             {/* Copyright Section */}
-            <div className="text-center mt-10 text-sm">
+            <div className="text-center mt-10 text-xs md:text-sm">
               &copy; {new Date().getFullYear()} Colorlib. All Rights Reserved.
             </div>
           </div>
         </div>
       </div>
-
-      {/* Footer Content */}
     </div>
   );
 };

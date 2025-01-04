@@ -88,31 +88,29 @@ export default function ScrollScaleImage() {
             </FadeIn>
             <FadeIn view={"-300px"}>
               <div
-                className={`flex gap-10 items-center p-10 bg-[#0c0c0c] rounded-3xl ${"flex-row"}`}
+                className={`flex flex-col  gap-10 items-center bg-[#0c0c0c] rounded-3xl p-10 md:flex-row`}
               >
-                <FadeIn view={"-300px"}>
+                <div className="w-full md:w-1/2">
                   <Image
                     src={"/7.png"}
                     width={800}
                     height={800}
-                    alt={"image"}
-                    className="object-cover rounded-md "
+                    alt={"/7.png"}
+                    className="object-cover rounded-lg w-full h-auto"
                   />
-                </FadeIn>
-                <FadeIn view={"-300px"}>
-                  <h1 className="mb-10 text-4xl text-left font-bold text-white">
+                </div>
+                {/* Text Section */}
+                <div className="w-full md:w-1/2">
+                  <h1 className="mb-6 text-xl md:text-4xl text-left font-bold text-white">
                     Rounak Chowdhury's Portfolio
                   </h1>
-                  <p className="text-gray-300 text-left text-base w-[45vw]">
+                  <p className="text-gray-300 text-sm text-left md:text-base">
                     I am Rounak, a professional video editor and photographer
                     from India with over 4 years of experience crafting visually
-                    compelling content. My expertise spans across Adobe Suite
-                    (Premiere Pro, After Effects, Photoshop, and more), DaVinci
-                    Resolve, and Magix Vegas Pro, and I am adept in animation,
-                    motion graphics, typography, sound design, color grading,
-                    and VFX.
+                    and I am adept in animation, motion graphics, typography,
+                    sound design, color grading, and VFX.
                   </p>
-                </FadeIn>
+                </div>
               </div>
             </FadeIn>
           </motion.div>

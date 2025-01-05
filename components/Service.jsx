@@ -7,9 +7,9 @@ const Service = () => {
 
   // Map list items to their respective background images
   const backgroundImages = {
-    "Frontend Websites": "/frontend.png",
-    "Full Stack Websites": "/fullstack.jpg",
-    "Portfolio Websites": "/webdesign.jpg",
+    "Frontend Websites": "/front.png",
+    "Full Stack Websites": "/fullstack.png",
+    "Portfolio Websites": "/portfolio.png",
     "Interactive Mobile Apps": "/mobile.png",
   };
 
@@ -24,21 +24,41 @@ const Service = () => {
     "Interactive Mobile Apps":
       "We specialize in creating engaging mobile applications that provide a seamless user experience. From ideation to deployment, we handle every aspect of app development. Whether it's a social networking app, a fitness tracker, or an e-commerce platform, we prioritize user-centric design and functionality to make your app stand out in a competitive market.",
   };
+  const handleImageSet = (item) => {
+    setTimeout(() => {
+      setHoveredItem(item);
+    }, [100]);
+  };
 
   return (
-    <div
-      className="flex flex-col h-screen justify-between"
-      style={{
-        backgroundImage: `url(${
-          hoveredItem ? backgroundImages[hoveredItem] : "/bgservice.jpg"
-        })`,
-        backgroundSize: "cover", // Ensures the image covers the entire div
-        backgroundPosition: "center", // Centers the image
-        backgroundRepeat: "no-repeat", // Prevents the image from repeating
-        transition: "background-image 0.25s ease",
-        transitionDelay: "0.5s", // Smooth transition for background changes
-      }}
-    >
+    <div className="relative flex flex-col h-screen justify-between ">
+      {/* Background Blur */}
+      <div className="absolute inset-0">
+        {/* Background Image */}
+        <div
+          style={{
+            backgroundImage: `url(${
+              hoveredItem ? backgroundImages[hoveredItem] : "/bgservice.jpg"
+            })`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            filter: "blur(2px)",
+            zIndex: -1,
+          }}
+          className="absolute inset-0 transition-all duration-500 delay-500"
+        ></div>
+
+        {/* Semi-Transparent Overlay */}
+        <div
+          className="absolute inset-0 bg-black"
+          style={{
+            opacity: 0.4, // Adjust this value to control the transparency level
+            zIndex: -1,
+          }}
+        ></div>
+      </div>
+
       {/* Heading */}
       <div className="absolute top-8 w-full text-center">
         <FadeIn>
@@ -56,8 +76,8 @@ const Service = () => {
                 <li
                   key={item}
                   className="text-gray-100 hover:text-white text-3xl py-8 inline-block hover:cursor-pointer hover:font-bold hover:text-4xl transition-all duration-500"
-                  onMouseEnter={() => setHoveredItem(item)} // Update state on hover
-                  onMouseLeave={() => setHoveredItem(null)} // Reset state on hover out
+                  onMouseEnter={() => handleImageSet(item)}
+                  // Update state on hover // Reset state on hover out
                 >
                   {item}
                 </li>
@@ -70,7 +90,7 @@ const Service = () => {
         <div className="w-[46vw] relative left-1/2 h-1/2 flex items-center justify-center">
           {hoveredItem ? (
             <FadeIn key={hoveredItem} view="-150px">
-              <div className="bg-white bg-opacity-70 p-6 rounded-lg shadow-lg animate-fadeInTopToBottom">
+              <div className="bg-white  p-6 rounded-lg shadow-lg animate-fadeInTopToBottom">
                 <p className="text-black text-xl font-medium text-center">
                   {customText[hoveredItem]}
                 </p>
